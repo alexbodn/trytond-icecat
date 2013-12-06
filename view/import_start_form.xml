@@ -1,0 +1,8 @@
+<form string="Add ICECAT Product" col="2">
+    <label name="mode"/>
+    <field name="mode"/>
+    <label name="url"/>
+    <field name="url"/>
+    <label name="product_id"/>
+    <field name="product_id"/>
+</form>

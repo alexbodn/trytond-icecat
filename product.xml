@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.ui.view" id="import_start_view_form">
+            <field name="model">product.icecat.import.start</field>
+            <field name="type">form</field>
+            <field name="name">import_start_form</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_import_icecat_product">
+            <field name="name">Import Product from ICECAT</field>
+            <field name="wiz_name">product.icecat.import</field>
+        </record>
+        <menuitem action="wizard_import_icecat_product" id="menu_add_product"
+            parent="product.menu_main_product" name="Import Product from ICECAT" />
+    </data>
+</tryton>
