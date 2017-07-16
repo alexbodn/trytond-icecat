@@ -14,7 +14,7 @@ from trytond.model import ModelView, fields
 from trytond.pool import Pool, PoolMeta
 from trytond.exceptions import UserError
 from trytond.transaction import Transaction
-from trytond.config import CONFIG
+from trytond.config import config
 from trytond.pyson import Eval
 from lxml import objectify
 import requests
@@ -150,14 +150,15 @@ class ImportIcecatProduct(Wizard):
         """
         Return the objectified XML for the url
         """
-        if ('icecat_username' not in CONFIG.options) or \
-                ('icecat_password' not in CONFIG.options):
+        icecat_username = config.get('options', 'icecat_username')
+        icecat_password = config.get('options', 'icecat_password')
+        if not (icecat_username and icecat_password):
             raise UserError('Icecat username or password not in config')
 
         return objectify.fromstring(
             requests.get(
                 url,
-                auth=(CONFIG['icecat_username'], CONFIG['icecat_password'])
+                auth=(icecat_username, icecat_password)
             ).content
         )
 
